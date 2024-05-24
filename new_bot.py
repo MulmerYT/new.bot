@@ -84,6 +84,15 @@ async def cool(ctx):
 async def _bot(ctx):
     """Is the bot cool?"""
     await ctx.send('Yes, the bot is cool.')
-
+@bot.command()
+async def guess(ctx, number: int):
+    """Guess a random number from 1 to 6."""
+    # explained in a previous example, this gives you
+    # a random number from 1-6
+    value = random.randint(1, 6)
+    # with your new helper function, you can add a
+    # green check mark if the guess was correct,
+    # or a red cross mark if it wasn't
+    await ctx.tick(number == value)
 
 bot.run('TOKEN')
